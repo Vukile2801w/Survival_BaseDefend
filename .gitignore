@@ -9,6 +9,3 @@
 .vsconfig
 UserSettings/
 
-# Auto-generated
-*.csproj
-*.sln
