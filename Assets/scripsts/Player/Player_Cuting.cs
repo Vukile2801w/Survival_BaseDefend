@@ -7,6 +7,7 @@ public class Player_Cuting : MonoBehaviour
     private InputAction use;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private float maxDistance = 5f; // Maksimalna daljina za sečenje
+    [SerializeField] private Player_Inventory inventory;
 
     private void Awake()
     {
@@ -37,28 +38,24 @@ public class Player_Cuting : MonoBehaviour
                 float distance = Vector3.Distance(transform.position, hit.point);
                 if (distance <= maxDistance)
                 {
-                    if (hitObject.CompareTag("Tree")) // Sigurnija provera taga
+                    if (!hitObject.CompareTag("Tree")) // Sigurnija provera taga
                     {
-                        User_Tree tree = hitObject.GetComponent<User_Tree>();
-                        if (tree != null)
-                        {
-                            tree.Cut(10); // Poziv metode Cut
-                        }
-                        else
-                        {
-                            Debug.LogWarning("User_Tree component not found on " + hitObject.name);
-                        }
+                        return;
                     }
-                }
-                else
-                {
-                    Debug.Log($"Object is too far: {distance:F2} units away.");
+                    User_Tree tree = hitObject.GetComponent<User_Tree>();
+
+                    if (tree == null)
+                    {
+                        Debug.LogWarning("User_Tree component not found on " + hitObject.name);
+                        return;
+                    }
+
+
+                    tree.Cut(10, inventory);
+                    
                 }
             }
-            else
-            {
-                Debug.DrawLine(ray.origin, ray.origin + ray.direction * 100f, Color.red); // Produžena linija ako nema hit-a
-            }
+                
         }
     }
 }
