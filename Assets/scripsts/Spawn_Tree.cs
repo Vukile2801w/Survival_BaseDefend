@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using TreeEditor;
 using UnityEngine;
 
+[System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Used by Unity")]
 public class Spawn_Tree : MonoBehaviour
 {
-    [SerializeField] GameObject[] keep_away;
+    [SerializeField] GameObject[] objects_to_avoid;
     [SerializeField] GameObject[] trees_prefabs; // Prefabi za stabla
     [SerializeField] GameObject new_tree_parent; // Parent objekat za organizaciju
 
@@ -17,17 +17,47 @@ public class Spawn_Tree : MonoBehaviour
     [SerializeField][Range(0, 1)] float chance_to_spawn;
     [SerializeField][Range(0, 1f)] float scale;
 
-
-    bool Is_Full(Vector3Int pos)
+    /// <summary>
+    /// Vraća sve objekte (kolajdere) koji se nalaze unutar određene ćelije.
+    /// </summary>
+    /// <param name="cellCenter">Centar ćelije u svetu.</param>
+    /// <param name="cellSize">Veličina ćelije.</param>
+    /// <returns>Lista kolajdera unutar ćelije.</returns>
+    /// <summary>
+    /// Vraća niz `Collider` objekata koji se nalaze unutar određene ćelije.
+    /// </summary>
+    /// <param name="cellCenter">Centar ćelije u svetu.</param>
+    /// <param name="cellSize">Veličina ćelije.</param>
+    /// <returns>Niz `Collider` objekata unutar ćelije.</returns>
+    Collider[] Get_Colliders_In_Cell(Vector3 cellCenter, Vector3 cellSize)
     {
-        for (int i = 0; i < keep_away.Length; i++)
-        {
-            Vector3Int object_pos = grid.WorldToCell(keep_away[i].transform.position);
-            if (object_pos == pos) return true;
-        }
-        return false;
+        Vector3 halfCellSize = cellSize / 2; // Polovina veličine ćelije
+        return Physics.OverlapBox(cellCenter, halfCellSize, Quaternion.identity);
     }
 
+
+    /// <summary>
+    /// Proverava da li ćelija sadrži objekte koji treba da se ignorišu.
+    /// </summary>
+    /// <param name="cellCenter">Centar ćelije u svetu.</param>
+    /// <param name="cellSize">Veličina ćelije.</param>
+    /// <returns>True ako sadrži objekte za ignorisanje, False inače.</returns>
+    bool Is_Containing_Ignore_Object(Vector3 cellCenter, Vector3 cellSize)
+    {
+        Collider[] colliders = Get_Colliders_In_Cell(cellCenter, cellSize);
+
+        foreach (var collider in colliders)
+        {
+            foreach (var avoidObject in objects_to_avoid)
+            {
+                if (collider.gameObject == avoidObject)
+                {
+                    return true; // Nađen je objekat koji treba da se ignoriše
+                }
+            }
+        }
+        return false; // Nema objekata koji treba da se ignorišu
+    }
 
     private void Awake()
     {
@@ -48,7 +78,8 @@ public class Spawn_Tree : MonoBehaviour
                 // Dobij centar ćelije iz grida
                 Vector3 cellCenter = grid.GetCellCenterWorld(cellPosition);
 
-                if (Is_Full(cellPosition))
+                // Preskoči ćeliju ako sadrži objekat za ignorisanje
+                if (Is_Containing_Ignore_Object(cellCenter, grid.cellSize))
                 {
                     continue;
                 }
@@ -66,7 +97,6 @@ public class Spawn_Tree : MonoBehaviour
                 // Izaberi nasumičan prefab iz niza
                 GameObject treePrefab = trees_prefabs[Random.Range(0, trees_prefabs.Length)];
 
-
                 float noise = Mathf.PerlinNoise(new_pos.x * scale, new_pos.z * scale);
 
                 if (noise > (1 - chance_to_spawn))
@@ -74,7 +104,7 @@ public class Spawn_Tree : MonoBehaviour
                     // Instanciraj stablo
                     Instantiate(treePrefab, new_pos, Quaternion.identity, new_tree_parent.transform);
 
-                    Debug.Log($"New Tree at {new_pos}");
+                    
                 }
             }
         }

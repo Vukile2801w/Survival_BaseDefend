@@ -61,13 +61,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\scripsts\Player\Player_Shoot.cs" />
+    <Compile Include="Assets\scripsts\Spawn_Tree.cs" />
     <Compile Include="Assets\scripsts\Player\Player_Cuting.cs" />
     <Compile Include="Assets\Project Settings\Input\Player_Controle.cs" />
+    <Compile Include="Assets\scripsts\Health_Bar.cs" />
     <Compile Include="Assets\scripsts\Player\Player.cs" />
     <Compile Include="Assets\scripsts\follow_player.cs" />
     <Compile Include="Assets\scripsts\Player\Player_Inventory.cs" />
+    <Compile Include="Assets\Billboard.cs" />
     <Compile Include="Assets\scripsts\Player\Player_Movment.cs" />
-    <Compile Include="Assets\Spawn_Tree.cs" />
+    <Compile Include="Assets\scripsts\Building.cs" />
     <Compile Include="Assets\scripsts\User_Tree.cs" />
     <Compile Include="Assets\scripsts\Animate.cs" />
   </ItemGroup>
@@ -969,6 +972,10 @@
     </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor">
