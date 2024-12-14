@@ -22,4 +22,14 @@ public class Building : MonoBehaviour
 
         
     }
+
+    public void Damage(float damage)
+    {
+        health -= damage;
+
+        if (health < 0)
+        {
+            gameObject.SetActive(false);
+        }
+    }
 }

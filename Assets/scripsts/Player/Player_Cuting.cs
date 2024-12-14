@@ -1,6 +1,7 @@
 ﻿using UnityEngine.InputSystem;
 using UnityEngine;
 
+[System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Used by Unity")]
 public class Player_Cuting : MonoBehaviour
 {
     private Player_Controle player_controle;
@@ -8,6 +9,11 @@ public class Player_Cuting : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private float maxDistance = 5f; // Maksimalna daljina za sečenje
     [SerializeField] private Player_Inventory inventory;
+
+
+    [Header("Debug")]
+    [SerializeField] bool debug;
+    [SerializeField] private Mesh circle;
 
     private void Awake()
     {
@@ -57,5 +63,21 @@ public class Player_Cuting : MonoBehaviour
             }
                 
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (circle == null) return; // Provera da li je mesh postavljen
+        if (!debug) return;
+
+        Gizmos.color = Color.green;
+
+        // Iscrtavanje kruga na horizontalnoj ravni
+        Gizmos.DrawWireMesh(
+            mesh: circle,
+            position: new Vector3(transform.position.x, 0.14f, transform.position.z),
+            rotation: Quaternion.identity,
+            scale: new Vector3(maxDistance * 2, 0, maxDistance * 2) // Skaliranje samo u ravni x i z
+        );
     }
 }
