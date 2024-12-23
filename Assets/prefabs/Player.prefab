@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6642506121267633231}
   - component: {fileID: 5110648541253506606}
   - component: {fileID: 3315993404903997150}
-  - component: {fileID: 680429276012953867}
   - component: {fileID: 1677124088145175775}
   - component: {fileID: 5238642092144574615}
   - component: {fileID: 4238128343941846266}
@@ -142,21 +141,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &680429276012953867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 764925798861553712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
 --- !u!114 &1677124088145175775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,6 +200,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
   maxDistance: 5
+  inventory: {fileID: 0}
+  debug: 0
+  circle: {fileID: 0}
 --- !u!114 &6206425179004017670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f6454cc44a456c4ca3cf315260adb08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 0
+  Wood: {fileID: 0}
 --- !u!1 &3831616724884624428
 GameObject:
   m_ObjectHideFlags: 0

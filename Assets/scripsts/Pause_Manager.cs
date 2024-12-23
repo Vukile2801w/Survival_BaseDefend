@@ -2,7 +2,7 @@
 
 public class PauseManager : MonoBehaviour
 {
-    private bool Is_Paused = false; // Praćenje stanja pauze
+    [SerializeField] private bool Is_Paused = false; // Praćenje stanja pauze
 
     public GameObject Pause_Menu_UI; // UI element za meni pauze (opciono)
 
@@ -34,6 +34,8 @@ public class PauseManager : MonoBehaviour
     // Nastavlja igru
     public void Resume_Game()
     {
+        Debug.Log("Resume button clicked"); // Dodato za testiranje
+
         Time.timeScale = 1f; // Vraća igru u normalno stanje
         Is_Paused = false;
 
