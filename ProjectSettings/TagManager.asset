@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Tree
   - Building
+  - Enemy
   layers:
   - Default
   - TransparentFX

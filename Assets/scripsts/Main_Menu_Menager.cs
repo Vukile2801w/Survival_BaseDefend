@@ -10,6 +10,8 @@ public class Main_Menu_Manager : MonoBehaviour
 
     public void Play(string scene_name)
     {
+        Debug.LogAssertion($"Loading {scene_name}");
+
         // Proverite da li je ime scene postavljeno
         if (!string.IsNullOrEmpty(scene_name))
         {

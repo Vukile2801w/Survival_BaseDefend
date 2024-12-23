@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 494376, guid: 76be61eeff2e7164cb99e1cf8cf0c22b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -0.74074084
       objectReference: {fileID: 0}
     - target: {fileID: 494376, guid: 76be61eeff2e7164cb99e1cf8cf0c22b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -82,12 +82,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 182382, guid: 76be61eeff2e7164cb99e1cf8cf0c22b, type: 3}
       insertIndex: -1
       addedObject: {fileID: -1251193834791134365}
-    - targetCorrespondingSourceObject: {fileID: 182382, guid: 76be61eeff2e7164cb99e1cf8cf0c22b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 830322525076388379}
-    - targetCorrespondingSourceObject: {fileID: 182382, guid: 76be61eeff2e7164cb99e1cf8cf0c22b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -4023596493255939436}
   m_SourcePrefab: {fileID: 100100000, guid: 76be61eeff2e7164cb99e1cf8cf0c22b, type: 3}
 --- !u!1 &1224098480448479239 stripped
 GameObject:
@@ -137,58 +131,3 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: f6c597498257ae843adeb6a76dd3013e, type: 3}
---- !u!114 &830322525076388379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1224098480448479239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9199ca82e0482504c920b8eb74a158c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  user_animation: {fileID: -4023596493255939436}
-  healt: 100
-  self_value: 5
---- !u!114 &-4023596493255939436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1224098480448479239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50a6f0b684a9bb140a52672bf4c4f678, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 10
-  rotationX: 90
-  rotationZ: 45
-  easingCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0.0036239624
-      value: -0.024749756
-      inSlope: -1.7326562
-      outSlope: -1.7326562
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.16133553
-    - serializedVersion: 3
-      time: 0.49514922
-      value: 1.0110278
-      inSlope: -1.6314629
-      outSlope: -1.6314629
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.062244844
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  started: 0

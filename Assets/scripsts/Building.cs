@@ -31,5 +31,11 @@ public class Building : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+
+    }
+
+    public float Get_Health()
+    {
+        return health;
     }
 }

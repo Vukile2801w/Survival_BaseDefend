@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -6,7 +7,9 @@ using UnityEngine;
 [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Used by Unity")]
 public class Enemy_Attack : MonoBehaviour
 {
-    [SerializeField] public float range;
+    [SerializeField] public float attack_range;
+    [SerializeField] public float sight_range;
+
     [SerializeField] public float attack;
     [SerializeField] private float attack_speed;
 
@@ -21,7 +24,7 @@ public class Enemy_Attack : MonoBehaviour
         last_attack += Time.deltaTime;
     }
 
-    public void Attack(GameObject target)
+    public bool Attack(GameObject target)
     {
         if (last_attack > 1 / attack_speed)
         {
@@ -31,7 +34,11 @@ public class Enemy_Attack : MonoBehaviour
             }
 
             last_attack = 0;
+
+            return building.Get_Health() <= 0;
         }
+
+        return false;
     }
 
     private void OnDrawGizmos()
@@ -46,7 +53,17 @@ public class Enemy_Attack : MonoBehaviour
             mesh: circle,
             position: new Vector3(transform.position.x, 0.14f, transform.position.z),
             rotation: Quaternion.identity,
-            scale: new Vector3(range * 2, 0, range * 2) // Skaliranje samo u ravni x i z
+            scale: new Vector3(attack_range * 2, 0, attack_range * 2) // Skaliranje samo u ravni x i z
+        );
+        
+        Gizmos.color = Color.yellow;
+
+        // Iscrtavanje kruga na horizontalnoj ravni
+        Gizmos.DrawWireMesh(
+            mesh: circle,
+            position: new Vector3(transform.position.x, 0.14f, transform.position.z),
+            rotation: Quaternion.identity,
+            scale: new Vector3(sight_range * 2, 0, sight_range * 2) // Skaliranje samo u ravni x i z
         );
     }
 }
