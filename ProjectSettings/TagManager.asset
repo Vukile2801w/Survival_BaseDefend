@@ -7,11 +7,12 @@ TagManager:
   - Tree
   - Building
   - Enemy
+  - Preview Object
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - Render_On_Top

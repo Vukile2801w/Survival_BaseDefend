@@ -60,27 +60,40 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.31f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\scripsts\Player\Player_Shoot.cs" />
-    <Compile Include="Assets\scripsts\Spawn_Tree.cs" />
-    <Compile Include="Assets\scripsts\Player\Player_Cuting.cs" />
+    <Compile Include="Assets\scripts\Shop\ShopItems_SO.cs" />
+    <Compile Include="Assets\scripts\Building\Placement_System.cs" />
+    <Compile Include="Assets\scripts\Pause_Manager.cs" />
+    <Compile Include="Assets\scripts\Building\Material_Checker.cs" />
+    <Compile Include="Assets\scripts\Player\Player_UI.cs" />
+    <Compile Include="Assets\scripts\Objects_DataBase_SO.cs" />
     <Compile Include="Assets\Project Settings\Input\Player_Controle.cs" />
-    <Compile Include="Assets\scripsts\Health_Bar.cs" />
-    <Compile Include="Assets\scripsts\Player\Player.cs" />
-    <Compile Include="Assets\scripsts\follow_player.cs" />
-    <Compile Include="Assets\scripsts\Enemy\Enemy_Health.cs" />
-    <Compile Include="Assets\scripsts\Main_Menu_Menager.cs" />
-    <Compile Include="Assets\scripsts\Player\Player_Inventory.cs" />
-    <Compile Include="Assets\scripsts\Pause_Manager.cs" />
+    <Compile Include="Assets\scripts\follow_player.cs" />
+    <Compile Include="Assets\scripts\Spawn_Tree.cs" />
+    <Compile Include="Assets\scripts\User_Tree.cs" />
+    <Compile Include="Assets\scripts\Building\Preview_System.cs" />
+    <Compile Include="Assets\scripts\Billboard.cs" />
+    <Compile Include="Assets\scripts\Enemy\Enemy_Movment.cs" />
+    <Compile Include="Assets\scripts\Music_Menager.cs" />
+    <Compile Include="Assets\scripts\Health_Bar.cs" />
+    <Compile Include="Assets\scripts\Player\Player_Movment.cs" />
     <Compile Include="Assets\test\Debuging.cs" />
-    <Compile Include="Assets\scripsts\Player\Player_Movment.cs" />
-    <Compile Include="Assets\scripsts\Tower.cs" />
-    <Compile Include="Assets\scripsts\Building.cs" />
-    <Compile Include="Assets\scripsts\Enemy\Enemy_Movment.cs" />
-    <Compile Include="Assets\scripsts\Enemy\Enemy_Attack.cs" />
-    <Compile Include="Assets\scripsts\User_Tree.cs" />
-    <Compile Include="Assets\scripsts\Billboard.cs" />
-    <Compile Include="Assets\scripsts\Player\Player_UI.cs" />
-    <Compile Include="Assets\scripsts\Animate.cs" />
+    <Compile Include="Assets\scripts\Player\Player_Inventory.cs" />
+    <Compile Include="Assets\scripts\Building.cs" />
+    <Compile Include="Assets\scripts\Player\Player.cs" />
+    <Compile Include="Assets\scripts\Enemy\Enemy_Health.cs" />
+    <Compile Include="Assets\scripts\Enemy\Enemy_Menager_Editor.cs" />
+    <Compile Include="Assets\scripts\Animate.cs" />
+    <Compile Include="Assets\scripts\Player\Player_Shoot.cs" />
+    <Compile Include="Assets\scripts\Main_Menu_Menager.cs" />
+    <Compile Include="Assets\scripts\Building\Build_Input_Menager.cs" />
+    <Compile Include="Assets\scripts\Tower.cs" />
+    <Compile Include="Assets\scripts\Enemy\Enemy_Attack.cs" />
+    <Compile Include="Assets\scripts\Player\Player_Cuting.cs" />
+    <Compile Include="Assets\scripts\Building\Grid_Data.cs" />
+    <Compile Include="Assets\scripts\Materilals.cs" />
+    <Compile Include="Assets\scripts\Enemy\Enemy_Manger.cs" />
+    <Compile Include="Assets\scripts\Shop\Shop Menagment.cs" />
+    <Compile Include="Assets\scripts\Base_Building.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -88,6 +101,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+    <None Include="Assets\scripts\Enemy\spawn_points.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />

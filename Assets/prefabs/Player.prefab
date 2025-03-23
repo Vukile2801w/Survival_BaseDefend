@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5238642092144574615}
   - component: {fileID: 4238128343941846266}
   - component: {fileID: 6206425179004017670}
+  - component: {fileID: 4813368238145176477}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -200,6 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
   maxDistance: 5
+  damage: 10
   inventory: {fileID: 0}
   debug: 0
   circle: {fileID: 0}
@@ -215,7 +217,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f6454cc44a456c4ca3cf315260adb08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Wood: {fileID: 0}
+  ui_items: []
+--- !u!114 &4813368238145176477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764925798861553712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35fab459500cdce46b9f32ce04978768, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Pause_Menu: {fileID: 0}
 --- !u!1 &3831616724884624428
 GameObject:
   m_ObjectHideFlags: 0

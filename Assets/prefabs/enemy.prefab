@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack_range: 3
-  sight_range: 40
+  sight_range: 1000
   attack: 20
   attack_speed: 0.5
   debug: 0

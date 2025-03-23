@@ -209,6 +209,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 866931351348851559}
     - target: {fileID: 4526693828699511156, guid: 5308b328753d2ab4c94d5044887a952c, type: 3}
+      propertyPath: Helth_Bar_Canvas
+      value: 
+      objectReference: {fileID: 3149170935495894486}
+    - target: {fileID: 4526693828699511156, guid: 5308b328753d2ab4c94d5044887a952c, type: 3}
       propertyPath: Health_Bar_Fill_Image
       value: 
       objectReference: {fileID: 2243892907605107703}
