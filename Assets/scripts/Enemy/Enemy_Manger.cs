@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using System;
+using TMPro;
+
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.ShaderGraph.Internal;
+#endif
 using System.IO;
 
 
@@ -15,15 +19,26 @@ public class Enemy_Manger : MonoBehaviour
     
     [SerializeField] Spawn_Area[] spawn_areas;
 
+    [SerializeField] TextMeshProUGUI timer_text;
+
+
     [SerializeField] float Group_Spawn_Radius = 1f;
     [SerializeField] int Enemy_per_group = 5;
     [SerializeField] GameObject Enemy_prefab;
+    [SerializeField] float time_between_groups = 30f;
+    private float lastSpawnTime = 0f;
 
     [SerializeField] bool debug = false;
 
     Vector3 point = new Vector3();
 
 
+    public IEnumerator WaitFor(float time) { yield return new WaitForSecondsRealtime(time); Spawn_Wave(); }
+
+    private void Start()
+    {
+        
+    }
 
     public void Test_Spawn_Wave()
     {
@@ -98,6 +113,24 @@ public class Enemy_Manger : MonoBehaviour
     void Update()
     {
 
+        timer_text.text = (time_between_groups - lastSpawnTime).ToString("F2");
+
+        // Check if enough time has passed since the last spawn
+        if (lastSpawnTime > time_between_groups)
+        {
+            Spawn_Wave();
+            lastSpawnTime = 0;  // Update the last spawn time
+            time_between_groups -= 1;
+            Enemy_per_group += 1;
+            
+            if (time_between_groups < 5) time_between_groups = 5;
+            if (Enemy_per_group > 25) time_between_groups = 25;
+
+        }
+        else
+        {
+            lastSpawnTime += Time.deltaTime;
+        }
     }
 
     private void OnDrawGizmos()
