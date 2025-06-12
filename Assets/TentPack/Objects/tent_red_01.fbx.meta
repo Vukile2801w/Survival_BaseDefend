@@ -34,8 +34,6 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
-    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -125,3 +123,10 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 19370
+  packageName: Tent Pack
+  packageVersion: v1
+  assetPath: Assets/TentPack/Objects/tent_red_01.fbx
+  uploadId: 8439

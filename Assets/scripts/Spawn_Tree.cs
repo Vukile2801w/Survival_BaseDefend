@@ -72,75 +72,85 @@ public class Spawn_Tree : MonoBehaviour
         {
             for (int z = 0; z < size_by_cell.z; z++)
             {
-                // Računaj trenutnu poziciju ćelije u grid indeksima
-                Vector3Int cellPosition = new Vector3Int(
-                    startCell.x + x,
-                    startCell.y,
-                    startCell.z + z
-                );
-
-                // Dobij centar ćelije iz grida
-                Vector3 cellCenter = grid.GetCellCenterWorld(cellPosition);
-
-                // Preskoči ćeliju ako sadrži objekat za ignorisanje
-                if (Is_Containing_Ignore_Object(cellCenter, grid.cellSize))
+                try
                 {
-                    continue;
-                }
 
-                // Nasumični offset unutar ćelije
-                Vector3 offset = new Vector3(
-                    UnityEngine.Random.Range(-grid.cellSize.x / 2, grid.cellSize.x / 2),
-                    0,
-                    UnityEngine.Random.Range(-grid.cellSize.z / 2, grid.cellSize.z / 2)
-                );
+                    // Računaj trenutnu poziciju ćelije u grid indeksima
+                    Vector3Int cellPosition = new Vector3Int(
+                        startCell.x + x,
+                        startCell.y,
+                        startCell.z + z
+                    );
 
-                // Konačna pozicija za stablo
-                Vector3 new_pos = cellCenter + offset;
+                    // Dobij centar ćelije iz grida
+                    Vector3 cellCenter = grid.GetCellCenterWorld(cellPosition);
 
-
-                System.Random random = new System.Random();
-
-                // Izaberi nasumičan prefab iz niza
-                GameObject treePrefab = trees_prefabs[random.Next(trees_prefabs.Length)];
-
-                float noise = Mathf.PerlinNoise(new_pos.x * scale + noise_offset.x, new_pos.z * scale + noise_offset.y);
-
-                if (noise > (1 - chance_to_spawn))
-                {
-                    // Dobij ID na osnovu prefaba stabla
-                    int ID = placement_system.Get_Selected_Object_Index(treePrefab);
-
-                    if (ID == -1)
+                    // Preskoči ćeliju ako sadrži objekat za ignorisanje
+                    if (Is_Containing_Ignore_Object(cellCenter, grid.cellSize))
                     {
-                        Debug.LogError($"Nije pronađen prefab stabla u bazi podataka. Name: {treePrefab.name}");
                         continue;
                     }
 
-                    // Sada pronađi indeks objekta u listi na osnovu ID-a
-                    int obj_index = placement_system.database.objectData.FindIndex(data => data.ID == ID);
+                    // Nasumični offset unutar ćelije
+                    Vector3 offset = new Vector3(
+                        UnityEngine.Random.Range(-grid.cellSize.x / 2, grid.cellSize.x / 2),
+                        0,
+                        UnityEngine.Random.Range(-grid.cellSize.z / 2, grid.cellSize.z / 2)
+                    );
 
-                    if (obj_index < 0)
+                    // Konačna pozicija za stablo
+                    Vector3 new_pos = cellCenter + offset;
+
+
+                    System.Random random = new System.Random();
+
+                    // Izaberi nasumičan prefab iz niza
+                    GameObject treePrefab = trees_prefabs[random.Next(trees_prefabs.Length)];
+
+                    float noise = Mathf.PerlinNoise(new_pos.x * scale + noise_offset.x, new_pos.z * scale + noise_offset.y);
+
+                    if (noise > (1 - chance_to_spawn))
                     {
-                        Debug.LogError($"Nije pronađen objekat sa ID {ID} u bazi podataka.");
-                        continue;
+                        // Dobij ID na osnovu prefaba stabla
+                        int ID = placement_system.Get_Selected_Object_Index(treePrefab);
+
+                        if (ID == -1)
+                        {
+                            Debug.LogError($"Nije pronađen prefab stabla u bazi podataka. Name: {treePrefab.name}");
+                            continue;
+                        }
+
+                        // Sada pronađi indeks objekta u listi na osnovu ID-a
+                        int obj_index = placement_system.database.objectData.FindIndex(data => data.ID == ID);
+
+                        if (obj_index < 0)
+                        {
+                            Debug.LogError($"Nije pronađen objekat sa ID {ID} u bazi podataka.");
+                            continue;
+                        }
+
+                        // Postavi objekat na mapu
+                        GameObject new_Object = Instantiate(treePrefab, new_pos, Quaternion.identity, new_tree_parent.transform);
+
+                        placement_system.placed_GameObject.Add(new_Object);
+
+                        Vector3Int grid_pos_int = grid.WorldToCell(new_Object.transform.position);
+
+                        placement_system.grid_data.Add_Object_At(
+                            grid_pos_int,
+                            placement_system.database.objectData[ID].Size,
+                            placement_system.database.objectData[ID].ID,
+                            Mathf.Max(placement_system.placed_GameObject.Count - 1, 0)
+                            );
                     }
 
-                    // Postavi objekat na mapu
-                    GameObject new_Object = Instantiate(treePrefab, new_pos, Quaternion.identity, new_tree_parent.transform);
-
-                    placement_system.placed_GameObject.Add(new_Object);
-
-                    Vector3Int grid_pos_int = grid.WorldToCell(new_Object.transform.position);
-
-                    placement_system.grid_data.Add_Object_At(
-                        grid_pos_int,
-                        placement_system.database.objectData[ID].Size,
-                        placement_system.database.objectData[ID].ID,
-                        Mathf.Max(placement_system.placed_GameObject.Count - 1, 0)
-                        );
                 }
 
+                finally
+                {
+                    // Obezbeđuje da se ne desi izuzetak ako nešto pođe po zlu
+                    Debug.Log($"Proverena ćelija {x}, {z} u gridu sa početnom pozicijom {pos}");
+                }
             }
         }
     }

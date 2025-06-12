@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
+using UnityEngine.AI;
 
 [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "Used by Unity")]
 public class Enemy_Movment : MonoBehaviour
@@ -13,6 +14,8 @@ public class Enemy_Movment : MonoBehaviour
     [SerializeField] private Enemy_Attack script_attack;
 
     [SerializeField] GameObject Target;
+
+    [SerializeField] private NavMeshAgent nav_mesh_agent;
 
     GameObject Find_new_Target()
     {
@@ -34,6 +37,7 @@ public class Enemy_Movment : MonoBehaviour
             return null;
         }
 
+
         // Pronalaženje najbliže mete
         Tuple<float, Collider> min_d = new Tuple<float, Collider>(float.PositiveInfinity, null);
 
@@ -51,41 +55,31 @@ public class Enemy_Movment : MonoBehaviour
     }
 
 
+    private void Start()
+    {
+        nav_mesh_agent.stoppingDistance = script_attack.attack_range;
+    }
+
 
     void Update()
     {
         if (Target == null) Target = Find_new_Target();
         if (Target == null) return;
-        
+
+        nav_mesh_agent.SetDestination(Target.transform.position);
+
 
         Transform Target_Transform = Target.transform;
 
-        Vector3 direction = Target_Transform.position - transform.position;
-        float distance = direction.magnitude;
+        
+        nav_mesh_agent.destination = Target_Transform.position;
 
-        if (distance > script_attack.attack_range)
-        {
-            // Kreće se prema meti
-            rb.velocity = direction.normalized * speed;
-        }
-        else
-        {
-            // Zaustavlja kretanje kada je u dometu napada
-            rb.velocity = new Vector3(0, rb.velocity.y, 0);
+        float distance = nav_mesh_agent.remainingDistance;
 
-            if (script_attack.Attack(Target))
-            {
-                Target = null;
-            }
-            
+        if (distance <= script_attack.attack_range)
+        {
+            script_attack.Attack(Target);
         }
 
-        // Rotira prema meti
-        Vector3 lookDirection = new Vector3(direction.x, 0, direction.z); // Ignoriše Y osu
-        if (lookDirection != Vector3.zero)
-        {
-            Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
-            transform.rotation = targetRotation;
-        }
     }
 }

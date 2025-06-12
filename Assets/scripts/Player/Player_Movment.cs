@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.InputSystem;
-using Assets.scripsts.Player;
 
 public class Player_Movement : MonoBehaviour
 {
@@ -9,46 +8,39 @@ public class Player_Movement : MonoBehaviour
 
     private Player_Controle player_controle;
     private InputAction move;
-    private InputAction look;
 
     [SerializeField] private Camera cam;
-
-    [SerializeField] private Player self;
-
     [SerializeField] private float speed = 5f; // Brzina kretanja
+    [SerializeField] private LayerMask layerMask; // Mask for raycasting
 
     // Dodaj ovo svojstvo u klasu Player_Movement
 
 
-    [SerializeField] Player player;
 
 
     private void Awake()
     {
         player_controle = new Player_Controle();
 
-        Player.rb = rb;
-        Player.camera = cam;
-
-        Player.movement_dir = Vector3.zero;
 
     }
 
     private void OnEnable()
     {
+
+
         move = player_controle.Player.Move;
         move.Enable();
 
 
-        look = player_controle.Player.Look;
-        look.Enable();
     }
 
 
     private void OnDisable()
     {
+        
+
         move.Disable();
-        look.Disable();
     }
 
     void FixedUpdate()
@@ -61,17 +53,16 @@ public class Player_Movement : MonoBehaviour
         Vector3 cameraRight = Get_Camera_Right(cam);
 
         // Računanje pravca kretanja
-        Player.movement_dir = (cameraRight * input.x + cameraForward * input.y).normalized * speed;
+        Vector3 movement_dir = (cameraRight * input.x + cameraForward * input.y).normalized * speed;
 
         // Postavljanje brzine pomoću Rigidbody-a
-        Vector3 newVelocity = new Vector3(Player.movement_dir.x, Player.rb.velocity.y, Player.movement_dir.z);
-        Player.rb.velocity = newVelocity;
+        Vector3 newVelocity = new Vector3(movement_dir.x, rb.linearVelocity.y, movement_dir.z);
+        rb.linearVelocity = newVelocity;
 
         // Okretanje igrača
-        Look_At();
+        Look_At(movement_dir);
 
 
-        // Testiraj trenutni pravac
     }
 
 
@@ -89,16 +80,19 @@ public class Player_Movement : MonoBehaviour
         return right.normalized;
     }
 
+    
+    
 
-    private void Look_At()
+
+    private void Look_At(Vector3 move_dir)
     {
-        Vector3 direction = Player.rb.velocity;
-        direction.y = 0f;
+        if (move_dir == Vector3.zero)
+            return; // Ako nema kretanja, ne radimo ništa
 
-        if (move.ReadValue<Vector2>().sqrMagnitude > 0.1f && direction.sqrMagnitude > 0.1f)
-            Player.rb.rotation = Quaternion.LookRotation(direction, Vector3.up);
-        else
-            Player.rb.angularVelocity = Vector3.zero;
+        move_dir.y = 0; // Ignoriramo visinu
+
+        transform.LookAt(transform.position + move_dir);
+
     }
 
     

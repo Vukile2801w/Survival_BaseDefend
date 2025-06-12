@@ -499,6 +499,7 @@
     "m_SGVersion": 2,
     "m_Type": "UnityEditor.Rendering.BuiltIn.ShaderGraph.BuiltInTarget",
     "m_ObjectId": "8f9372b38eb249f3b4a304ff9b42a214",
+    "m_Datas": [],
     "m_ActiveSubTarget": {
         "m_Id": "2ee8d81c6bb04b7cbfacaa4cbf67b0ef"
     },

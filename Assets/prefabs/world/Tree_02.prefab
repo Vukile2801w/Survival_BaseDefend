@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8637782689243481185}
   - component: {fileID: 9124243761838672933}
-  - component: {fileID: 6870396565595353604}
-  m_Layer: 0
+  - component: {fileID: 5963722208418481793}
+  - component: {fileID: 1598353749311540119}
+  m_Layer: 9
   m_Name: Tree_02
   m_TagString: Tree
   m_Icon: {fileID: 0}
@@ -36,7 +37,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &9124243761838672933
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -50,12 +51,29 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6870396565595353604
+--- !u!208 &5963722208418481793
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7043105540949323893}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 4.9550004, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.024, y: 4.947, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!114 &1598353749311540119
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -64,10 +82,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 7043105540949323893}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50a6f0b684a9bb140a52672bf4c4f678, type: 3}
+  m_Script: {fileID: 11500000, guid: 51b64b6e5eaa1994f901c9f947f08cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 9124243761838672933}
+  animations:
+  - animator: {fileID: 9124243761838672933}
+    AnimatorID: Hit
+    trigger_name: Tree_Hit
+  - animator: {fileID: 9124243761838672933}
+    AnimatorID: Tree_Fall
+    trigger_name: Tree_Fall
 --- !u!1001 &6293684694124132197
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -77,12 +101,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 8637782689243481185}
     m_Modifications:
     - target: {fileID: -4118224139615680897, guid: f7db35cd03ae59941941b0f16d8c0416, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1598353749311540119}
+    - target: {fileID: -4118224139615680897, guid: f7db35cd03ae59941941b0f16d8c0416, type: 3}
       propertyPath: user_animation
       value: 
-      objectReference: {fileID: 6870396565595353604}
+      objectReference: {fileID: 0}
     - target: {fileID: 7750827700321860349, guid: f7db35cd03ae59941941b0f16d8c0416, type: 3}
       propertyPath: m_Name
       value: Tree Type1 05 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7750827700321860349, guid: f7db35cd03ae59941941b0f16d8c0416, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7750827700322163229, guid: f7db35cd03ae59941941b0f16d8c0416, type: 3}
       propertyPath: m_LocalScale.x

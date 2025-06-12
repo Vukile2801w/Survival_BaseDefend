@@ -99,7 +99,7 @@ public class Enemy_Manger : MonoBehaviour
         }
         else
         {
-            transform.Find("Debug_Point").gameObject.SetActive(false);
+            transform.Find("Debug_Point")?.gameObject.SetActive(false);
 
         }
     }

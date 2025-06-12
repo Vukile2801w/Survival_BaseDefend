@@ -6,3 +6,10 @@ NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 19370
+  packageName: Tent Pack
+  packageVersion: v1
+  assetPath: Assets/TentPack/Materials/tent_d.mat
+  uploadId: 8439

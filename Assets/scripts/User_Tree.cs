@@ -6,73 +6,84 @@ using UnityEngine;
 
 public class User_Tree : MonoBehaviour
 {
-    [SerializeField] private Animate user_animation;
+    [SerializeField] private Animation_Menager animator;
     private bool animated; 
 
     [SerializeField] private float healt = 100f;
     [SerializeField] private int self_value = 1;
 
-    private bool is_cut = false;
+    public bool is_cut = false;
+    private bool started = false;
 
-    private void Start()
+    private void Update()
     {
-        if (user_animation != null)
+        Animation_Menager.StateInfo info = animator.IsPlayingAnimation("Tree_Fall", "Tree_Animator");
+        Debug.Log("Tree destroyed checked", this);
+
+        // Animacija je validna, igra se "Tree_Fall" i skoro je gotova
+        if (info.nameCorrect && info.isValid && info.normTimeCorrect >= 0.98f)
         {
-            animated = true;
-        }
-        else
-        {
-            animated = false;
+            Debug.Log($"Is valid {true}", this);
+
+
+            if (!is_cut)
+            {
+                animated = true;
+                is_cut = true;
+
+                Debug.Log("Tree destroyed");
+                Destroy(gameObject);
+            }
         }
     }
 
-    private void Handle_Playing_Dying_Anim()
-    {
-        if (animated)
-        {
-            user_animation.Play();
-        }
-        else
-        {
-            gameObject.SetActive(false);
-        }
-    }
+
 
 
     private void On_Down(Player_Inventory inventory)
     {
-        is_cut = true;
+        Collider mainCollider = gameObject.GetComponent<Collider>();
+        if (mainCollider != null)
+        {
+            mainCollider.enabled = false; // Disable main collider to prevent further interactions
+        }
+
+        foreach (Collider col in animator.gameObject.GetComponentsInChildren<Collider>())
+        {
+            if (col == null) continue;
+            col.enabled = false; 
+        }
 
         inventory.Add_Item(Materilals.Materials.Wood, self_value);
 
-        Handle_Playing_Dying_Anim();
+        animator.Play("Tree_Fall");
 
     }
+
 
     public bool Cut(float amount, Player_Inventory inventory)
     {
 
-
         healt -= amount;
+        Debug.Log("Tree Hit-ed!");
 
-        if (healt <= 0)
+
+        if (healt <= 0 && healt != float.NegativeInfinity)
         {
-            healt = 0;
+            healt = float.NegativeInfinity;
 
 
-            if (is_cut == false)
-            {
-                On_Down(inventory);
-            }
+            On_Down(inventory);
 
 
-            
+
             Debug.Log("Tree cut down!");
             return true;
         }
         else
         {
             Debug.Log($"Tree health: {healt}");
+            animator.Play("Hit");
             return false;
         }
     }

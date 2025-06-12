@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7426003381404807190}
   - component: {fileID: 7972106233754397175}
-  - component: {fileID: 4919430097451310055}
-  m_Layer: 0
+  - component: {fileID: 5221841806914010192}
+  - component: {fileID: 5510136407315661373}
+  m_Layer: 9
   m_Name: Tree_01
   m_TagString: Tree
   m_Icon: {fileID: 0}
@@ -29,14 +30,14 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8877259343351521879}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7972106233754397175
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -50,12 +51,29 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4919430097451310055
+--- !u!208 &5221841806914010192
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5306381255427641985}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.25, y: 4.9550004, z: 1.25}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.024, y: 4.947, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!114 &5510136407315661373
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -64,10 +82,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 5306381255427641985}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50a6f0b684a9bb140a52672bf4c4f678, type: 3}
+  m_Script: {fileID: 11500000, guid: 51b64b6e5eaa1994f901c9f947f08cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 7972106233754397175}
+  animations:
+  - animator: {fileID: 7972106233754397175}
+    AnimatorID: Hit
+    trigger_name: Tree_Hit
+  - animator: {fileID: 7972106233754397175}
+    AnimatorID: Tree_Fall
+    trigger_name: Tree_Fall
 --- !u!1001 &7768290734574354710
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -87,6 +111,10 @@ PrefabInstance:
     - target: {fileID: 1224098480448479239, guid: 650dc698568d8c14ca7075aec3a31db9, type: 3}
       propertyPath: m_Name
       value: Tree Type1 05 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1224098480448479239, guid: 650dc698568d8c14ca7075aec3a31db9, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1224098480448824129, guid: 650dc698568d8c14ca7075aec3a31db9, type: 3}
       propertyPath: m_LocalScale.x
@@ -165,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9199ca82e0482504c920b8eb74a158c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  user_animation: {fileID: 4919430097451310055}
+  animator: {fileID: 5510136407315661373}
   healt: 100
   self_value: 5
 --- !u!4 &8877259343351521879 stripped
