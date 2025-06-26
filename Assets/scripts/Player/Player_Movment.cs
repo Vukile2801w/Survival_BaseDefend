@@ -84,7 +84,7 @@ public class Player_Movement : MonoBehaviour
     
 
 
-    private void Look_At(Vector3 move_dir)
+    public void Look_At(Vector3 move_dir)
     {
         if (move_dir == Vector3.zero)
             return; // Ako nema kretanja, ne radimo ništa

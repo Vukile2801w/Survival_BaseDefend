@@ -1,0 +1,52 @@
+# Blender 4.3.2 MTL File: 'Hooper_mk1.blend'
+# www.blender.org
+
+newmtl Material.003
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd C:/Users/User/Desktop/AppData/Local/Textures/Terieir.png
+map_d C:/Users/User/Desktop/AppData/Local/Textures/Terieir.png
+
+newmtl Material.004
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd C:/Users/User/Desktop/AppData/Local/Textures/Landing_Legs.png
+map_d C:/Users/User/Desktop/AppData/Local/Textures/Landing_Legs.png
+
+newmtl Material.005
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd C:/Users/User/Desktop/AppData/Local/Textures/Fule Tank.png
+map_d C:/Users/User/Desktop/AppData/Local/Textures/Fule Tank.png
+
+newmtl Material.006
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+illum 2
+map_Kd C:/Users/User/Desktop/AppData/Local/Textures/Communicatron.png
+map_d C:/Users/User/Desktop/AppData/Local/Textures/Communicatron.png
+
+newmtl Material.007
+Ns 20.088037
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 4.500000
+illum 2
+map_Kd C:/Users/User/Desktop/AppData/Local/Textures/Command Pod.png
+map_d C:/Users/User/Desktop/AppData/Local/Textures/Command Pod.png

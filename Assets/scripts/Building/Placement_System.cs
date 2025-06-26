@@ -17,7 +17,7 @@ public class Placement_System : MonoBehaviour
     public int selected_Object_index { get; private set; } = -1;
     public int Shop_ID  = -1;
 
-
+    
     [Header("UI")]
     [SerializeField] private GameObject grid_visualisation;
     [SerializeField] private GameObject Build_Menu;

@@ -7,7 +7,7 @@ using UnityEngine;
 
 
 
-[CreateAssetMenu(fileName = "ObjectsDataBase", menuName = "ScriptableObjects/ObjectsDataBase")]
+[CreateAssetMenu(fileName = "ObjectsDataBase_Old", menuName = "ScriptableObjects/ObjectsDataBase_Old")]
 public class Objects_DataBase_SO : ScriptableObject
 {
     public List<Object_Data> objectData;

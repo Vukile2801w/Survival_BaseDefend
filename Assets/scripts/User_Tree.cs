@@ -18,7 +18,7 @@ public class User_Tree : MonoBehaviour
     private void Update()
     {
         Animation_Menager.StateInfo info = animator.IsPlayingAnimation("Tree_Fall", "Tree_Animator");
-        Debug.Log("Tree destroyed checked", this);
+        //Debug.Log("Tree destroyed checked", this);
 
         // Animacija je validna, igra se "Tree_Fall" i skoro je gotova
         if (info.nameCorrect && info.isValid && info.normTimeCorrect >= 0.98f)

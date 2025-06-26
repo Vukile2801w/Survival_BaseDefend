@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc3b5bddca6ac3d41b21e7e5d78e2467, type: 3}
+  m_Name: ObjectDataBase
+  m_EditorClassIdentifier: 
+  objects:
+  - <name>k__BackingField: Base
+    <prefab>k__BackingField: {fileID: 3402851405398869652, guid: b3d959a3a695ee44bb7779a98315ce86, type: 3}
+    <size>k__BackingField: {x: 2, y: 2}
+    <ID>k__BackingField: 0
+  - <name>k__BackingField: Tower
+    <prefab>k__BackingField: {fileID: 6433308765599562064, guid: 813bf4d12ff752c42a724570470f77f4, type: 3}
+    <size>k__BackingField: {x: 2, y: 2}
+    <ID>k__BackingField: 1
+  - <name>k__BackingField: Tree_01
+    <prefab>k__BackingField: {fileID: 5306381255427641985, guid: b7549836265de98458ea1cacef5d29e8, type: 3}
+    <size>k__BackingField: {x: 1, y: 1}
+    <ID>k__BackingField: 2
+  - <name>k__BackingField: Tree_02
+    <prefab>k__BackingField: {fileID: 7043105540949323893, guid: ff6306d45ccf2b84d92c48f750c5bb9f, type: 3}
+    <size>k__BackingField: {x: 1, y: 1}
+    <ID>k__BackingField: 3

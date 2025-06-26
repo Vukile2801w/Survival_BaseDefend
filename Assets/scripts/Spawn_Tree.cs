@@ -149,7 +149,7 @@ public class Spawn_Tree : MonoBehaviour
                 finally
                 {
                     // Obezbeđuje da se ne desi izuzetak ako nešto pođe po zlu
-                    Debug.Log($"Proverena ćelija {x}, {z} u gridu sa početnom pozicijom {pos}");
+                    //Debug.Log($"Proverena ćelija {x}, {z} u gridu sa početnom pozicijom {pos}");
                 }
             }
         }
