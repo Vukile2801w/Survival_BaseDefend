@@ -42,7 +42,7 @@ public class PlacedObjectManager : MonoBehaviour
     public bool IsObjectPlacedAt(Vector3 pos, out int objID)
     {
 
-        // Evo vidis
+        
 
 
         return placedObjects.TryGetValue(pos, out objID);
